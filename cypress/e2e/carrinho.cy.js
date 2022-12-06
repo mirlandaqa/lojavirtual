@@ -11,8 +11,9 @@ describe('Carrinho de compras', () => {
     })
 
     it('Adicionar produto no carrinho', () => {
-        cy.wait(1000)
-        cy.get('#twotabsearchtextbox').type('fone de ouvido PHILIPS sem fio TWS');
+        cy.wait(12000)
+        cy.get('.nav-fill > .nav-search-field').should('be.visible');
+        cy.get('.nav-search-field').type('fone de ouvido PHILIPS sem fio TWS');
         cy.get('#nav-search-submit-button').click()
         cy.scrollTo(0,300)
 
@@ -41,7 +42,7 @@ describe('Carrinho de compras', () => {
         cy.contains('Ir para o carrinho').click()
         cy.get('[value="Excluir"]').click()
 
-        cy.contains('foi removido de Carrinho de compras.').should('be.visible')
+        cy.contains('Seu carrinho de compras da Amazon está vazio.').should('be.visible')
 
 
     })
